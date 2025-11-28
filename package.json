@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --watch",
     "build": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --minify",
-    "rewrite": "npx prettier . --write"
+    "rewrite": "npx prettier . --write",
+    "unit": "vitest"
   },
   "keywords": [],
   "author": "",
@@ -14,10 +15,16 @@
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@tailwindcss/cli": "^4.1.4",
+    "@vitest/browser": "^4.0.14",
     "eslint": "^9.39.1",
     "globals": "^16.5.0",
+    "jsdom": "^27.2.0",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
-    "tailwindcss": "^4.1.4"
+    "tailwindcss": "^4.1.4",
+    "vitest": "^4.0.14"
+  },
+  "dependencies": {
+    "vite": "^7.2.4"
   }
 }
