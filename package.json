@@ -4,10 +4,12 @@
   "main": "index.js",
   "scripts": {
     "dev": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --watch",
+    "vite-dev": "vite",
     "build": "tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --minify",
     "rewrite": "npx prettier . --write",
     "unit": "vitest",
     "e2e": "npx playwright test",
+    "e2e-headed": "npx playwright test --headed",
     "e2e-report": "npx playwright show-report"
   },
   "keywords": [],
