@@ -1,6 +1,5 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
-import path from 'path';
 
 
 test('Checking the content of the paragraph in the about page', async ({ page }) => {
@@ -10,6 +9,18 @@ test('Checking the content of the paragraph in the about page', async ({ page })
 }) //test pass 
 
 
+test('checking if correct error message is displayed when article ID is not provided', async ({ page }) => {
+  await page.goto('/article.html')
+  const text = await page.getByText('No article ID provided').getAttribute('class')
+  await expect(text).toEqual('text-center text-red-500')
+}) //test pass
+
+
+test('Checking if correct error message is displayed when article ID do not excist', async ({ page }) => {
+  await page.goto('/article.html?id=101')
+  const text = await page.getByText('Article not found.').getAttribute('class')
+  await expect(text).toEqual('text-center text-red-500')
+}) //test pass
 
 
 
