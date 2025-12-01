@@ -23,6 +23,24 @@ test('Checking if correct error message is displayed when article ID do not exci
 }) //test pass
 
 
+test('Checking if i can add a favourite article and display it in favourite articles page', async({ page }) => {
+  //adding favourite
+  await page.goto('/index.html')
+  const favArticleButton = await page.getByRole('link', {name: 'New Technology Breakthrough'}).getByRole('button')
+  await favArticleButton.click()
+  
+  await page.goto('favourites.html')
+  const displayFavArticle = await page.getByRole('link', {name: 'New Technology Breakthrough'})
+  await expect(displayFavArticle).toBeVisible()
+  await expect(displayFavArticle).toContainText('New Technology Breakthrough')
+}) //test pass
+
+
+
+
+
+
+
 
 //Standard
 /*
