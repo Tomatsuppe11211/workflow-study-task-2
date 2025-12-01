@@ -37,7 +37,32 @@ test('Checking if i can add a favourite article and display it in favourite arti
 
 
 
+test('Testing a filled in contact form', async ({ page }) => {
+  await page.goto('/contact.html')
 
+  await page.getByRole('textbox', { name: 'Your Name' }).fill('Eric')
+  await page.getByRole('textbox', { name: 'Your Email' }).fill('EricMan@example.com')
+  await page.getByRole('textbox', { name: 'subject' }).fill('Test')
+  await page.getByRole('textbox', { name: 'Your Message' }).fill('Ello')
+  await page.getByRole('button', { name: 'send' }).click()
+
+  const message = page.getByRole('alert')
+  await expect(message).toContainText('Thank you') 
+}) //test pass
+
+
+test('Submitting an empty form', async({ page }) => {
+  await page.goto('/contact.html')
+
+  // Disable browser HTML5 validation
+  await page.$eval('#contact-form', form =>
+    form.setAttribute('novalidate', 'true')
+  );
+
+  await page.getByRole('button', { name: 'send' }).click()
+  const message = page.getByRole('alert')
+  await expect(message).toContainText('Please') 
+}) //test success
 
 
 
